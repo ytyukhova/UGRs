@@ -1,0 +1,64 @@
+Calculating Glare in Outdoor Lighting Installations
+========================================================
+author: Yulia Tyukhova
+date: October 30, 2020
+autosize: true
+
+Introduction
+========================================================
+
+Bright light sources in outdoor nighttime environments can cause discomfort, fatigue, and other adverse effects. It is important to be able to calculate the amount of discomfort glare from these installations to limit the negative effects. This application does just that!
+
+![](UGRs.png)
+
+The app
+========================================================
+<small> This app "Discomfort Glare Predictions using UGRs in outdoor nighttime environments allows one to calculate discomfort glare (discomfort from bright light sources) in outdoor nighttime environments using a glare index called UGR small source extension (CIE 146-147, 2002) using the following formula:
+
+$$8log\left[\frac{0.25}{L_b}\sum\frac{200I^2}{R^2p^2}\right]$$  
+
+
+Reference:  
+
+[CIE] Commission Internationale de l’Éclairage. 2002. CIE
+collection on glare. Vienna (Austria): CIE. TC 3-01 Report 146, 147. 25 p.
+</small>
+
+The App Inputs and Outputs
+========================================================
+
+<font size="5">
+APP INPUT VALUES:
+- Lb is the background luminance, in cd/m^2
+- I is the luminous intensity of the source, in cd
+- R is the distance from the observer to the center of the light source, in m
+- p is the Guth Position index = 1 **It assumes looking directly at the light source.**
+
+APP OUTPUT VALUE:
+- UGR small source extension value
+- Plot with the calculated value in relation to thresholds
+</font>
+
+***
+![Screenshot of the App](screenshot.jpg)
+
+Example calculation
+========================================================
+**Input values:**  
+- Background luminance = 10 cd/m^2  
+- Luminous intensity = 1000 cd  
+- Distance to the source = 30 m  
+
+```{r,echo=F}
+Lb=10
+I=1000
+R=30
+```
+
+**Output value**  
+
+UGRs:
+```{r}
+round(8*log10(0.25/Lb*(200*I^2)/(R^2*1^2)))
+```
+
